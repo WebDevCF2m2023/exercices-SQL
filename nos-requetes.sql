@@ -20,11 +20,13 @@ SELECT
   *
 FROM
   permission;
+
 -- Sélection de tous les champs d'utilisateurs
 SELECT
   *
 FROM
   `user`;
+
 -- Sélection de tous les champs d'utilisateurs avec le champs 'name' venant de permission
   -- En jointure interne ! 'name' étant présent 2x, il faut utiliser un alias 'AS permission_name'
 SELECT
@@ -33,6 +35,8 @@ SELECT
 FROM
   `user`
   INNER JOIN `permission` ON `user`.`permission_idpermission` = `permission`.`idpermission`;
+
+  
 -- Sélection de tous les champs d'utilisateurs sauf permission_idpermission et pwd
   -- avec le champs 'name' venant de permission renommé en 'permission_name'
   -- En jointure interne !
