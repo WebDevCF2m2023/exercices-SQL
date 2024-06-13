@@ -18,6 +18,12 @@ BETWEEN 2 AND 4;
 
 
 -- Séléctionnez `idcateg` et `name` de `categ` quand `idcateg` est 1, 3 ou 5  ordonné par `name` descendant
+SELECT `idcateg`, `name` 
+FROM `categ` 
+WHERE `idcateg` = 1
+OR `idcateg` = 3
+OR `idcateg` = 5
+ORDER BY `name` DESC;
 -- Séléctionnez tous les champs de `categ` quand `desc` contient 'et' n'importe où dans la chaîne
 -- Séléctionnez tous les champs de `categ` dont l' `idcateg` vaut 5 ainsi que les `idnews` et  `title` de la table `news` qui se trouvent dans cette catégorie, même si il n'y en a pas (présence de `categ` dans tous les cas, 17 lignes de résultats) , ordonnés par `news`.`title` ASC
 -- Séléctionnez tous les champs de `categ` dont l' `idcateg` vaut 5 ainsi que les `idnews` et  `title` de la table `news` qui se trouvent dans cette catégorie, même si il n'y en a pas (présence de `categ` dans tous les cas, 6 lignes de résultats) , ordonnés par `news`.`title` ASC ET que `news`.`visible` vaut 1 !
