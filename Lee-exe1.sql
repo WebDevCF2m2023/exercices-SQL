@@ -73,7 +73,11 @@ ON `h`.`news_idnews` = `n`.`idnews`
 WHERE `c`.`idcateg` = 5
 AND `n`.`visible` = 1;
 
--- Séléctionnez `idnews` et `title` de la table `news` lorsque le `title` commence par 'c' (7 résultats)
+-- Séléctionnez `idnews` et `title` de la table `news` lorsque le `title` commence par 'c' (7 résultats) ---- TROP FACILE COMPARE AUX PRECEDENTS :P
+SELECT `idnews`, `title` 
+FROM `news` 
+WHERE `title` 
+LIKE "C%";
 -- Séléctionnez `idnews` et `title` de la table `news` lorsque le `title` commence par 'a' et `visible` vaut 1 (10 résultats)
 -- Séléctionnez `idnews` et `title` de la table `news`, ainsi que les `iduser` et `login` de la table `user` (seulement si il y a une jointure)  lorsque le `title` commence par 'a' et `visible` vaut 1 (10 résultats)
 -- Séléctionnez  `idnews` et `title` de la table `news`, ainsi que les `iduser` et `login` de la table `user` (seulement si il y a une jointure)  lorsque le `title` commence par 'a' et `visible` vaut 1 , classés par `user`.`login` ascendant (10 résultats)
