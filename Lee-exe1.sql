@@ -137,6 +137,20 @@ AND `visible` = 1
 GROUP BY u.`login`
 ORDER BY u.`login` DESC
 LIMIT 3;
+-- Exe 15 m'as donné la piste nécessaire pour ceci :)
+SELECT * FROM
+	(SELECT n.`idnews`, n.`title`, u.`iduser`, u.`login` 
+    FROM `news` n
+    JOIN `user` u 
+    ON n.`user_iduser` = u.`iduser`
+    WHERE n.`title` 
+    LIKE "A%"
+    AND n.`visible` = 1 
+    ORDER BY u.`login` DESC 
+    LIMIT 3
+	) parceQueLesSelectionsImbriqueesOntBesoinDunAliasEtCommeCelaPeutEtreNimporteQuoiEtQueJeNaiPasBesoinDeLeRetaperVoiciUnJoliNomBienLong
+ORDER BY `login` ASC;
+
 
 -- Sélectionnez `iduser` et `login` de la table `user`, avec le nombre d'articles écrit par chacun renommé `nbarticles`, classés par `nbarticles` descendant et en n'en gardant que les 5 premiers (5 résultats)
 -- Presque parfait mais j'ai Chambers au lieu du Marshall (leur compte d'articles sont le même)
