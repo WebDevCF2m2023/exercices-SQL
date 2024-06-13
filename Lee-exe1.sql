@@ -139,3 +139,12 @@ ORDER BY u.`login` DESC
 LIMIT 3;
 
 -- Sélectionnez `iduser` et `login` de la table `user`, avec le nombre d'articles écrit par chacun renommé `nbarticles`, classés par `nbarticles` descendant et en n'en gardant que les 5 premiers (5 résultats)
+-- Presque parfait mais j'ai Chambers au lieu du Marshall (leur compte d'articles sont le même)
+SELECT u.`iduser`, u.`login`, 
+COUNT(n.`content`) AS nbarticles
+FROM `user` u
+JOIN `news` n
+ON n.`user_iduser` = u.`iduser`
+GROUP BY `u`.`iduser`
+ORDER BY nbarticles DESC
+LIMIT 5;
