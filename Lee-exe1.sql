@@ -50,7 +50,29 @@ ORDER BY `n`.`title` ASC;
 
 
 -- Séléctionnez tous les champs de `categ` dont l' `idcateg` vaut 5 ainsi que les `idnews` et  `title` de la table `news` qui se trouvent dans cette catégorie, même si il n'y en a pas (présence de `categ` dans tous les cas, 6 lignes de résultats) , ordonnés par `news`.`title` ASC ET que `news`.`visible` vaut 1 !
+SELECT `c`.`idcateg`, `c`.`name`, `c`.`desc`, `n`.`idnews`, `n`.`title`
+FROM `categ` c
+LEFT JOIN `news_has_categ` h
+ON `h`.`categ_idcateg` = `c`.`idcateg`
+LEFT JOIN `news` n
+ON `h`.`news_idnews` = `n`.`idnews`
+WHERE `c`.`idcateg` = 5
+AND `n`.`visible` = 1
+ORDER BY `n`.`title` ASC;
+
+
 -- Séléctionnez tous les champs de `categ` dont l' `idcateg` vaut 5 ainsi que les `idnews` (concaténés sur une seul ligne avec la ',' comme séparateur) et  `title` (concaténés sur une seul ligne avec '|||' comme séparateur) de la table `news` qui se trouvent dans cette catégorie, même si il n'y en a pas (présence de `categ` dans tous les cas, 1 ligne de résultats) ,  ET que `news`.`visible` vaut 1 !
+SELECT `c`.`idcateg`, `c`.`name`, `c`.`desc`, `n`.`idnews`, `n`.`title`,
+    GROUP_CONCAT(`n`.`idnews` SEPARATOR ',') AS news_ids,
+    GROUP_CONCAT(`n`.`title` SEPARATOR '|||') AS news_titles
+FROM `categ` c
+LEFT JOIN `news_has_categ` h
+ON `h`.`categ_idcateg` = `c`.`idcateg`
+LEFT JOIN `news` n
+ON `h`.`news_idnews` = `n`.`idnews`
+WHERE `c`.`idcateg` = 5
+AND `n`.`visible` = 1;
+
 -- Séléctionnez `idnews` et `title` de la table `news` lorsque le `title` commence par 'c' (7 résultats)
 -- Séléctionnez `idnews` et `title` de la table `news` lorsque le `title` commence par 'a' et `visible` vaut 1 (10 résultats)
 -- Séléctionnez `idnews` et `title` de la table `news`, ainsi que les `iduser` et `login` de la table `user` (seulement si il y a une jointure)  lorsque le `title` commence par 'a' et `visible` vaut 1 (10 résultats)
