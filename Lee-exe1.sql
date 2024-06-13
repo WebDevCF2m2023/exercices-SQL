@@ -5,6 +5,11 @@ ORDER BY `name` ASC;
 
 
 -- Séléctionnez `idcateg` et `name` de `categ` quand `idcateg` vaut 4
+SELECT `idcateg`, `name` 
+FROM `categ` 
+WHERE `idcateg` = 4;
+
+
 -- Séléctionnez `idcateg` et `name` de `categ` quand `idcateg` se trouve entre 2 et 4
 -- Séléctionnez `idcateg` et `name` de `categ` quand `idcateg` est 1, 3 ou 5  ordonné par `name` descendant
 -- Séléctionnez tous les champs de `categ` quand `desc` contient 'et' n'importe où dans la chaîne
