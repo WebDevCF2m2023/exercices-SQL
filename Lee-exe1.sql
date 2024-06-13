@@ -100,6 +100,18 @@ AND `visible` = 1;
 
 
 -- Séléctionnez  `idnews` et `title` de la table `news`, ainsi que les `iduser` et `login` de la table `user` (seulement si il y a une jointure)  lorsque le `title` commence par 'a' et `visible` vaut 1 , classés par `user`.`login` ascendant (10 résultats)
+-- Ne retourne que 8 résultats. Je trouve ça normale car id 26 et id 31 ont écris 2 articles chacun mais tu as spécifié 10 résultats!
+SELECT n.`idnews`, n.`title`, u.`iduser`, u.`login` 
+FROM `news` n
+JOIN `user` u
+ON u.`iduser` = n.`user_iduser`
+WHERE `title` 
+LIKE "a%"
+AND `visible` = 1
+GROUP BY u.`login`
+ORDER BY u.`login` ASC;
+
+
 -- Séléctionnez  `idnews` et `title` de la table `news`, ainsi que les `iduser` et `login` de la table `user` (seulement si il y a une jointure)  lorsque le `title` commence par 'a' et `visible` vaut 1 , classés par `user`.`login` ascendant en ne gardant que les 3 premiers résultats (3 résultats)
 -- Séléctionnez  `idnews` et `title` de la table `news`, ainsi que les `iduser` et `login` de la table `user` (seulement si il y a une jointure)  lorsque le `title` commence par 'a' et `visible` vaut 1 , classés par `user`.`login` ascendant en ne gardant que les 3 derniers résultats (3 résultats)
 -- Sélectionnez `iduser` et `login` de la table `user`, avec le nombre d'articles écrit par chacun renommé `nbarticles`, classés par `nbarticles` descendant et en n'en gardant que les 5 premiers (5 résultats)
